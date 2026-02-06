@@ -1,0 +1,39 @@
+begin
+ 
+select 'income' AS name,k.month AS month,sum(k.amount) AS amount,'IN' AS mode 
+from income_details AS k
+ where k.month =  month_w AND k.year = year_n
+ union 
+ select j.name AS name,i.month AS month,sum(i.amount) AS amount,'OUT' AS MODE 
+ from expense_detail i 
+ join expense_category j on i.expense_category_id = j.id
+ where i.month = month_w and i.year = year_n AND i.user_id = 1
+ group by i.expense_category_id;
+ 
+ END
+ 
+-----------------------
+
+CALL expense_trans('Jan', 2025);
+
+stored procedure is used to implement business logic 
+with parameters and control flow.
+
+-------------------------------------------- view
+
+CREATE VIEW expense_summary AS
+SELECT category, SUM(amount) AS total
+FROM expense_detail
+GROUP BY category;
+
+----------------------------------------
+
+SELECT * FROM expense_summary;
+A view is a virtual table used for simplifying and securing data access
+-----------------------------------------
+
+
+
+
+
+

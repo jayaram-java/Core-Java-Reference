@@ -1,0 +1,20 @@
+Microservices
+How does Spring Boot support Microservices?
+Spring Cloud
+Eureka (Service Discovery)
+Feign Client
+Config Server
+API Gateway
+
+----------------------------------------------------
+
+How do you enable CORS?
+Using:
+@CrossOrigin
+WebMvcConfigurer
+
+-----------------------------------------------------
+
+How do you create a PDF or send email in Spring Boot?
+PDF → OpenPDF / iText
+Email → Jakarta Mail (JavaMailSender)

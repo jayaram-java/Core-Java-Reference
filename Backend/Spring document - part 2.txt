@@ -1,0 +1,34 @@
+Dependency injection : 
+
+Dependency Injection (DI) is a design pattern used in software development 
+to reduce tight coupling between components, making the code more flexible, 
+testable, and maintainable.
+
+
+Types of Dependency Injection:
+
+Constructor Injection – via constructor
+Setter Injection – via setter method
+Field Injection – directly into fields (used in frameworks like Spring)
+
+---------------------------------------------------------------------------- AOP
+
+AOP (Aspect-Oriented Programming) in Spring is a programming paradigm that helps you separate cross-cutting concerns 
+(like logging, security, or transactions) 
+from the core business logic.
+
+AOP lets you add extra behavior (like logging, security checks, etc.) 
+before or after a method runs, without changing the method's code.
+
+Logging
+Security
+Transaction management
+Performance monitoring
+Exception handling
+
+-------------------------------------------------------------------------------------layers
+
+1. Presentation Layer (Controller Layer)
+2. Service Layer (Business Logic Layer)
+3. Database Layer (Data Access Layer or Repository Layer)
+

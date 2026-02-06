@@ -1,0 +1,63 @@
+What is Spring Boot?
+
+Spring Boot is an extension of the Spring framework that simplifies 
+application development by providing auto-configuration, 
+embedded servers, and production-ready features, reducing boilerplate code.
+
+--------------------------------------------
+
+Advantages of Spring Boot
+
+No XML configuration
+Embedded Tomcat/Jetty
+Auto-configuration
+Faster development
+Production-ready (Actuator)
+Easy integration with microservices
+
+--------------------------------------------------
+
+What is Auto-Configuration?
+
+Spring Boot automatically configures beans based on:
+application.properties
+spring-boot-starter-data-jpa
+------------------------------------------------------
+What is Spring Boot Starter?
+spring-boot-starter-web
+spring-boot-starter-data-jpa
+spring-boot-starter-security
+
+-----------------------------------------------------------
+
+@SpringBootApplication = @Configuration + @EnableAutoConfiguration + @ComponentScan
+
+------------------------------------------------------------
+
+@Controller → returns view (JSP/HTML)
+@RestController → returns JSON/XML
+(@RestController = @Controller + @ResponseBody)
+
+--------------------------------------------------------------
+
+How do you handle exceptions in Spring Boot?
+
+@ExceptionHandler
+@ControllerAdvice
+@RestControllerAdvice
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

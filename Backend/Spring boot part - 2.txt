@@ -1,0 +1,42 @@
+What is Spring Data JPA?
+It simplifies database access using repositories, reducing boilerplate DAO code.
+
+---------------------------------------------------------
+
+CrudRepository → basic CRUD
+JpaRepository → pagination, sorting, batch operations
+
+---------------------------------------------------------
+
+Hibernate is an ORM framework that maps Java objects to database tables
+
+--------------------------------------------------------
+
+save() → saves entity but may not immediately hit DB
+saveAndFlush() → saves and flushes immediately
+
+-------------------------------------------------------- Configuration
+.properties → key=value
+.yml → hierarchical, cleaner for complex configs
+-------------------------------------------------------
+How do you read properties?
+@Value
+@ConfigurationProperties
+
+----------------------------------------------------- Logging monitoring 
+What is Spring Boot Actuator?
+Provides production-ready endpoints:
+/health
+/metrics
+/info
+/beans
+-------------------------------------------------------
+What logging framework is used in Spring Boot?
+
+Default: Logback
+Can use Log4j2
+
+
+
+
+

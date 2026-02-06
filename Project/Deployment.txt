@@ -1,0 +1,28 @@
+
+WinSCP → move the JAR file
+
+PuTTY → run or manage the JAR on the VM
+
+Steps : 
+
+Open WinSCP
+Connect using:
+Host: VM IP
+Username / Password or key
+Drag myapp.jar from VM to your local system (or vice-versa)
+Open PuTTY
+java -jar myapp.jar
+
+-------------------------------------
+I containerized the Spring Boot application using Docker by creating a Dockerfile, 
+building the image with docker build, and running it using docker run.
+I exposed port 8080 and verified the deployment using logs and actuator endpoints.
+
+Step 1: Build JAR - mvn clean package
+Step 2: Build Docker Image - docker build -t itemservice:1.0 .
+Step 3: Run Container - docker run -d -p 8080:8080 --name itemservice itemservice:1.0
+Step 4: Verify Application - curl http://localhost:8080/actuator/health
+
+docker images
+docker images | grep itemservice - list out the images
+docker rmi itemservice:1.0 - remove that image
