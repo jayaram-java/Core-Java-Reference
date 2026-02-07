@@ -1,0 +1,82 @@
+
+What is Second-Level Cache in Hibernate?
+
+Hibernate Second-level cache is a cache that lives at the SessionFactory level,
+not per session
+
+It stores entities, collections and query results.
+It is shared across multiple session and transactions.
+
+| Feature  | First-Level Cache | Second-Level Cache      |
+| -------- | ----------------- | ----------------------- |
+| Scope    | Session           | SessionFactory          |
+| Default  | Enabled           | Disabled                |
+| Shared   |  No               |   Yes                   |
+| Lifetime | Session only      | Application lifecycle   |
+| Access   | Always used       | Used only if configured |
+
+------------------------------------------------------------------------
+
+How Second-Level Cache Works (Flow)
+
+Session checks First-Level Cache
+
+If not found → checks Second-Level Cache
+If not found → hits Database
+
+Result stored in:
+First-Level Cache
+Second-Level Cache (if enabled)
+
+-------------------------------------
+What Can Be Cached?
+
+Hibernate can cache:
+Entities
+Collections
+Query results (Query Cache – separate)
+
+----------------------------------------
+
+Popular Second-Level Cache Providers
+
+Ehcache (most common)
+Redis
+
+--------------------------------------------- coding
+<dependency>
+  <groupId>org.hibernate</groupId>
+  <artifactId>hibernate-ehcache</artifactId>
+</dependency>
+
+Enable cache in applicatoin.properties
+spring.jpa.properties.hibernate.cache.use_second_level_cache=true
+spring.jpa.properties.hibernate.cache.use_query_cache=true
+spring.jpa.properties.hibernate.cache.region.factory_class=org.hibernate.cache.ehcache.EhCacheRegionFactory
+
+Mark entity as cacheable 
+
+@Entity
+@Cacheable
+@org.hibernate.annotations.Cache(
+    usage = CacheConcurrencyStrategy.READ_WRITE
+)
+public class BranchList {
+    @Id
+    private Long id;
+    private String name;
+}
+
+When to Use Second-Level Cache?
+
+Reference data
+Read-heavy applications
+Master data (Country, Branch, Bank codes)
+
+Hibernate second-level cache is a shared cache at SessionFactory level 
+that reduces database calls across multiple sessions.
+
+
+
+
+
