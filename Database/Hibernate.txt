@@ -1,0 +1,62 @@
+Hibernate is a Java ORM (Object Relational Mapping) framework 
+that maps Java objects (POJOs) to database tables 
+and handles database operations automatically.
+--------------------------------------------
+Why Hibernate is used
+
+Removes boilerplate JDBC code
+Database-independent (supports MySQL, Oracle, PostgreSQL, etc.)
+Improves developer productivity
+Built-in caching, lazy loading, and transaction management
+Easy integration with Spring / Spring Boot
+---------------------------------------------
+How Hibernate works (Flow)
+
+Java object (Entity)
+Hibernate converts object → SQL
+SQL executes on DB
+ResultSet → Java object
+Object returned to application
+------------------------------------------------Session factory
+SessionFactory
+
+Heavyweight object
+Created once per application
+Thread-safe
+------------------------------------------------ Session
+Lightweight
+Used to perform CRUD operations
+Not thread-safe
+------------------------------------------------- Transaction
+Commit or rollback operations
+-------------------------------------------------Hibernate Caching
+First-Level Cache
+
+Default
+Session-level
+Cannot be disabled
+---------------------------------
+Second-Level Cache
+
+SessionFactory-level
+Optional
+Improves performance for read-heavy data
+Common providers: Ehcache, Hazelcast, Redis
+-------------------------------------------------
+Fetch Strategies
+
+Lazy (default) → data loads when accessed
+Eager → data loads immediately
+@OneToMany(fetch = FetchType.LAZY)
+--------------------------------------------------Advantages
+Advantages
+
+Less code compared to JDBC
+Automatic table creation
+Caching support
+Pagination & batch processing
+Easy maintenance
+
+
+
+
