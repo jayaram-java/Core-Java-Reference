@@ -1,0 +1,103 @@
+
+properties :
+
+<!-- Exclude Spring Boot default logging (Logback) -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+<!-- Log4j2 Starter -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-log4j2</artifactId>
+</dependency>
+
+--------------------------------------------------------------
+
+This automatically pulls:
+
+log4j-api
+log4j-core
+log4j-slf4j-impl
+----------------------------------------------------------
+# Tell Spring Boot to use Log4j2 config
+logging.config=classpath:log4j2.xml
+
+# Optional log levels
+logging.level.root=INFO
+logging.level.org.springframework=INFO
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.cache=DEBUG
+
+------------------------------------------------
+
+Log4j2 provides better performance, async logging support, 
+and flexible configuration compared to Logback and Log4j 1.x. 
+It is suitable for high-throughput banking applications.
+
+| Question                        | Correct Answer            |
+| ------------------------------- | ------------------------- |
+| Log4j vs Log4j2?                | Log4j2 is faster & async  |
+| Why avoid `System.out.println`? | Blocks I/O, no log levels |
+| Async logging?                  | Uses LMAX Disruptor       |
+| Production logging?             | File + rolling policy     |
+
+
+Implemented Log4j2 with rolling file appenders and Hibernate 
+SQL logging for better observability and performance.
+
+
+----------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n
+        </Property>
+        <Property name="LOG_PATH">logs</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- File Appender -->
+        <RollingFile name="FileAppender"
+                     fileName="${LOG_PATH}/application.log"
+                     filePattern="${LOG_PATH}/application-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+
+        <!-- Hibernate SQL -->
+        <Logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <!-- Root Logger -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>
+
