@@ -1,0 +1,105 @@
+What is Spring Security?
+
+Spring Security is a powerful authentication and authorization framework 
+for Java applications. It protects applications against common security threats 
+like CSRF, session fixation, and unauthorized access.
+
+What are Authentication and Authorization?
+
+Authentication → Verifying who you are (username & password)
+Authorization → Verifying what you can access (roles/permissions)
+
+What are the main features of Spring Security?
+
+Authentication & Authorization
+Password encoding
+CSRF protection
+Session management
+Method-level security
+OAuth2 & JWT support
+
+What is SecurityFilterChain?
+
+It is a chain of servlet filters that intercept every HTTP request 
+and apply security rules like authentication and authorization.
+
+What is UserDetailsService?
+
+It is used to load user-specific data 
+(username, password, roles) during authentication.
+
+What is AuthenticationManager?
+
+It is the core interface that processes authentication 
+requests and delegates them to AuthenticationProvider.
+
+What is AuthenticationProvider?
+
+It performs the actual authentication 
+logic (e.g., validating username/password).
+
+What is PasswordEncoder?
+
+Used to encrypt passwords.
+Common implementations:
+BCryptPasswordEncoder  (recommended)
+NoOpPasswordEncoder  (not secure)
+
+What is CSRF? How does Spring Security handle it?
+
+CSRF (Cross-Site Request Forgery) tricks users into submitting malicious requests.
+Spring Security:
+Enables CSRF protection by default
+Uses a CSRF token for validation
+
+What is @EnableMethodSecurity?
+
+Used to enable method-level authorization using annotations like:
+@PreAuthorize
+@PostAuthorize
+@Secured
+
+What is JWT?
+
+JWT (JSON Web Token) is a stateless authentication mechanism 
+where user info is stored in a token sent with each request.
+
+| Session               | JWT                       |
+| --------------------- | ------------------------- |
+| Server stores session | Stateless                 |
+| Uses cookies          | Uses Authorization header |
+| Scales poorly         | Scales well               |
+
+What is OAuth2?
+
+OAuth2 is an authorization framework allowing third-party apps
+to access resources without sharing passwords.
+
+What is OncePerRequestFilter?
+
+A filter that runs only once per request, commonly used for JWT validation.
+
+What is CORS?
+
+CORS allows/restricts cross-domain requests.
+
+Spring Security handles it via:
+http.cors();
+--------------------------------------------------------------------------
+How do you disable Spring Security for specific URLs?
+
+http.authorizeHttpRequests()
+    .requestMatchers("/login", "/public/**").permitAll()
+    .anyRequest().authenticated();
+
+How do you secure REST APIs?
+Use JWT
+Disable sessions
+Disable CSRF (for stateless APIs)
+
+How do you handle logout?
+http.logout()
+    .logoutUrl("/logout")
+    .invalidateHttpSession(true);
+
+
