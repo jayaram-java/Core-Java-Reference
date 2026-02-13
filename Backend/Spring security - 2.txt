@@ -1,0 +1,22 @@
+internal security components :
+
+Client
+  ↓
+Security Filter Chain
+  ↓
+JwtAuthenticationFilter
+  ↓
+AuthenticationManager
+  ↓
+UserDetailsService
+  ↓
+Database
+
+-------------------------------------
+Authentication Processing
+
+UsernamePasswordAuthenticationToken created
+Passed to AuthenticationManager
+DaoAuthenticationProvider
+UserDetailsService loads user from DB
+Password checked using PasswordEncoder

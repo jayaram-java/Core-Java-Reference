@@ -1,0 +1,76 @@
+
+Spring Framework :
+
+It is lightweight , loosely coupled and integrated framework for developing enterprise application in java.
+
+Test ob = new Test(); -Tightly coupled 
+
+Test ob; - loosely coupled 
+
+--------------------------------------------------------------------------
+
+Advantages :
+
+Predefined templates :
+Spring framework provides template for JDBC , Hibernate & JPA.
+
+Loose coupling :
+Because of dependency injection
+
+Light weight :
+Because of its pojo(Plain old java object) implementation
+
+--------------------------------------------------------------------------
+
+Modules of spring framework : 
+
+Test 
+Spring core container
+AOP - Aspect Oriented Programming
+Data Access/Integration
+Web
+
+----------------------------------------------- Spring core annotation
+
+Beans - Object
+
+@Bean - It will return an object that should be registered as a bean in the spring application context.
+It stores in ioc(Inversion of control) container.
+
+@Configuration - source of bean definition
+
+@ComponentScan : 
+1.Instructs spring where to look for classes annotated with @Component
+2.basepackages - parameter of @componentScan
+
+@Component :
+1.Register as a class as being managed by spring.
+
+@Primary :
+used to give higher preference to a bean, when there are multiple beans of same type.
+
+@Qualifier("petrolCar")
+4.Qualifier
+	used to resolve the autowiring conflict when there are multiple beans of same type.
+	
+
+-----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
