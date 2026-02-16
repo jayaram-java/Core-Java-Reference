@@ -1,0 +1,15 @@
+
+How to improve Spring Boot performance?
+
+Enabling caching
+use connection pooling(HikariCP pool)
+lazy loading
+reduce N+1 queries
+
+
+How do you handle high transaction load?
+
+Horizontal scaling
+Load balancer
+Redis caching
+Async processing

@@ -76,7 +76,36 @@ Master data (Country, Branch, Bank codes)
 Hibernate second-level cache is a shared cache at SessionFactory level 
 that reduces database calls across multiple sessions.
 
+--------------------------------------------------------------------------------------------------
+
+What @MapsId Does
+
+@MapsId("customerId") means:
+
+Take customerId from EmbeddedId and map it from Customer entity.
+
+Without @MapsId, JPA will create duplicate columns.
+------------------------------------------------------------------------
+Why Use @EmbeddedId Instead of @IdClass?
+| @EmbeddedId                       | @IdClass         |
+| --------------------------------- | ---------------- |
+| Cleaner                           | More boilerplate |
+| Better for banking composite keys | Legacy style     |
+| Easier maintenance                | Harder to manage |
 
 
+What is a Composite Key?
+
+A composite key is a primary key made of two or more columns.
+
+What is a Composite Table?
+
+A composite table is a table where:
+
+The primary key consists of multiple columns
+
+It is commonly used in many-to-many relationships
+
+A composite table is a table whose primary key consists of two or more columns combined together to uniquely identify a record.
 
 

@@ -18,3 +18,57 @@ WebMvcConfigurer
 How do you create a PDF or send email in Spring Boot?
 PDF → OpenPDF / iText
 Email → Jakarta Mail (JavaMailSender)
+
+---------------------------------------------------------
+
+client is the project
+
+--------------------------------------------------------- Circuit breaker
+
+What is Circuit Breaker?
+Prevents cascading failures.
+
+Example:
+Resilience4j
+
+States:
+Closed
+Open
+Half-open
+
+-----------------------------------------------------
+
+How do you deploy microservices?
+
+Docker containers
+Kubernetes orchestration
+
+Tools:
+
+Docker
+Kubernetes
+
+Account Service 
+Transfer Service 
+Loan Service 
+
+---------------------------------------------------
+
+One microservice is down. What happens?
+
+Answer:
+
+Circuit breaker opens
+Fallback response
+Retry mechanism
+Alert monitoring
+
+--------------------------------------------------------
+
+Flow:
+Client → API Gateway → Auth Service → Business Services → DB
+Logging → ELK
+Tracing → Zipkin
+Deployment → Kubernetes
+
+-----------------------------------------------------------
