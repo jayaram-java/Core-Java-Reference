@@ -1,0 +1,49 @@
+Scheduler :
+A Scheduler in Spring Boot is a feature that allows you to automatically 
+execute a task at a specific time or at fixed intervals without manual intervention.
+
+@EnableScheduling -> Enables scheduling
+@Scheduled -> Defines the task execution timing
+
+
+cron format : 
+
+┌──────── second (0 - 59)
+│ ┌────── minute (0 - 59)
+│ │ ┌──── hour (0 - 23)
+│ │ │ ┌── day of month (1 - 31)
+│ │ │ │ ┌ month (1 - 12)
+│ │ │ │ │ ┌ day of week (0 - 7)
+│ │ │ │ │ │
+* * * * * *
+
+@Scheduled(cron = "0 0 9 * * ?") - Runs every day at 9 AM
+
+@Scheduled(cron = "0 0 22 * * ?", zone = "Asia/Kolkata")
+
+
+@Scheduled(cron = "0 0 9 1 * ?", zone = "Asia/Kolkata")
+
+0 0 9 1 * ?
+│ │ │ │ │ │
+│ │ │ │ │ └─ any day of week
+│ │ │ │ └── any month
+│ │ │ └──── 1st day of month
+│ │ └────── 9 AM
+│ └──────── 0 minute
+└────────── 0 second
+
+
+| Field | Description  |
+| ----- | ------------ |
+| 1     | Seconds      |
+| 2     | Minutes      |
+| 3     | Hours        |
+| 4     | Day of Month |
+| 5     | Month        |
+| 6     | Day of Week  |
+
+
+Why Do We Use Scheduler?
+Monthly transaction reports
+Batch processing

@@ -1,0 +1,66 @@
+In Spring Boot, both RestTemplate and RestClient are used to call external REST APIs.
+
+But there is an important difference:
+
+RestTemplate → Old (Synchronous, now in maintenance mode)
+RestClient → New (Introduced in Spring 6 / Spring Boot 3, modern & fluent API)
+
+RestTemplate:
+
+Features
+
+Synchronous
+Simple
+Widely used in older Spring Boot apps
+Now in maintenance mode
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+}
+
+--------------------------------------------------------------
+
+RestClient
+
+Features
+
+Fluent API
+Better error handling
+Modern alternative to RestTemplate
+Works well in microservices architecture
+
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public RestClient restClient() {
+        return RestClient.create();
+    }
+}
+
+------------------------------------------------------------------
+
+| Feature          | RestTemplate      | RestClient         |
+| ---------------- | ----------------- | ------------------ |
+| Introduced       | Spring 3          | Spring 6.1         |
+| Status           | Maintenance mode  | Actively developed |
+| API Style        | Template style    | Fluent API         |
+| Code readability | Medium            | Very clean         |
+| Future support   |   No new features |  Yes              |
+| Based on         | HttpURLConnection | WebClient infra    |
+| Recommended now? |  No               |  Yes              |
+
+
+Fluent API :
+
+restClient.get()
+          .uri("url")
+          .retrieve()
+          .body(String.class);
+

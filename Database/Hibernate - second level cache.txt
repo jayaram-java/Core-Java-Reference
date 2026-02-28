@@ -108,4 +108,17 @@ It is commonly used in many-to-many relationships
 
 A composite table is a table whose primary key consists of two or more columns combined together to uniquely identify a record.
 
+| Relationship          | Type         |
+| --------------------- | ------------ |
+| Branch → Account      | One-to-Many  |
+| Account → Transaction | One-to-Many  |
+| Customer ↔ Account    | Many-to-Many |
+| User ↔ Role           | Many-to-Many |
+
+
+Account → Branch    Many to one
+
+
+composite - it has two primary keys
+
 

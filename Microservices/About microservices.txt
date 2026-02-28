@@ -1,0 +1,20 @@
+A microservice is a small, independent application that performs a single business function 
+and communicates with other services over the network.
+
+
+services :
+
+Customermgmt services
+Scheduler service 
+Account Service
+
+--------------------------------------------------------------------
+
+| Monolithic Application        | Microservices                 |
+| ----------------------------- | ----------------------------- |
+| One big application           | Multiple small services       |
+| Single deployment             | Independent deployment        |
+| Hard to scale specific module | Scale only required service   |
+| Single tech stack             | Different tech stack possible |
+
+---------------------------------------------------------------------
