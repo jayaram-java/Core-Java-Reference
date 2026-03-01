@@ -38,6 +38,9 @@ FROM (
 ) t
 WHERE rank_no = 2;
 
+select salary , dense_rank() over (order by salary desc) as rank_no 
+
+
 ---------------------------------------------------------------------- window function 
 
 ROW_NUMBER()

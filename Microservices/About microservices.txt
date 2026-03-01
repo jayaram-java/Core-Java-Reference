@@ -18,3 +18,35 @@ Account Service
 | Single tech stack             | Different tech stack possible |
 
 ---------------------------------------------------------------------
+
+Group Id:    com.bank.microservices
+Artifact Id: eureka-server
+
+All services register to Eureka Server
+Services communicate using service name
+No need to use IP addresses
+
+-----------------------
+
+feignclient - communicate with other service 
+circuit breaker - 
+
+----------------------------
+
+
+@EnableEurekaServer
+
+--------------------------------------------
+
+   <!-- Eureka Server -->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+    </dependency>
+	
+---------------------------------------------
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>

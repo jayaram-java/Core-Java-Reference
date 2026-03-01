@@ -1,0 +1,45 @@
+JpaRepository is a Spring Data JPA interface that provides ready-made database operations for your entity.
+
+| Method         | Purpose           |
+| -------------- | ----------------- |
+| save(entity)   | Insert / Update   |
+| findById(id)   | Get single record |
+| findAll()      | Get all records   |
+| deleteById(id) | Delete record     |
+| count()        | Count records     |
+| existsById(id) | Check existence   |
+
+-------------------------------------------------------- JPA query
+
+ Optional<Account> findByAccountNumber(String accountNumber);
+
+    // Find all active accounts
+    List<Account> findByStatus(String status);
+
+    // Find accounts by type (SAVINGS, CURRENT)
+    List<Account> findByAccountType(String accountType);
+
+    // Find accounts with balance greater than
+    List<Account> findByBalanceGreaterThan(Double amount);
+
+    // Find accounts by branch
+    List<Account> findByBranchBranchId(Long branchId);
+
+    // Find accounts created after date
+    List<Account> findByCreatedDateAfter(LocalDateTime date);
+
+    // Find by account type and status
+    List<Account> findByAccountTypeAndStatus(String type, String status);
+	
+---------------------------------------------------------JPQL - Java Persistence Query Language
+
+@Query("SELECT a FROM Account a WHERE a.balance > :amount")
+List<Account> findRichAccounts(@Param("amount") Double amount);
+
+-----------------------------------------------------------Pagination
+
+
+Page<Account> findByStatus(String status, Pageable pageable);
+
+Pageable pageable = PageRequest.of(0, 10, Sort.by("balance").descending());
+accountRepository.findByStatus("ACTIVE", pageable);
