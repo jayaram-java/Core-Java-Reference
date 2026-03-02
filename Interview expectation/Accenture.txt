@@ -1,0 +1,28 @@
+What is a Skill Interview?
+
+In this round, they will mainly check:
+Your technical knowledge
+Your project experience
+Your problem-solving skills
+
+Your understanding of:
+
+Java
+Spring Boot
+Microservices
+Logs & debugging
+SQL
+
+Production support concepts (since it's Application Support role)
+
+------------------------------------------------------------------------------
+
+How do you handle production issues?
+What is incident management?
+How do you analyze logs?
+Explain one critical issue you solved.
+How do you monitor applications?
+What is SLA?
+Difference between 4xx and 5xx errors?
+
+--------------------------------------------------------

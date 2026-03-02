@@ -1,0 +1,52 @@
+Circuit breaker(Resilience4j - dependency) : 
+
+A Circuit Breaker is a design pattern used in microservices architecture to prevent a system from repeatedly calling a failing service.
+
+It works just like an electrical circuit breaker:
+
+If too many failures happen → it opens the circuit
+Stops calling the failed service
+Gives it time to recover
+
+Why Do We Need It?
+
+Service A → calls → Service B
+If Service B is slow or down, then:
+
+Service A keeps waiting
+Threads get blocked
+System becomes slow
+Eventually whole system crashes 
+
+Circuit breaker prevents this chain failure.
+
+Circuit Breaker States:
+
+Closed State (Normal)
+
+All requests pass through.
+Failures are monitored.
+If failures exceed threshold → moves to OPEN.
+
+Open State (Failure Mode)
+
+No requests allowed.
+Immediately returns fallback response.
+After some time → moves to HALF-OPEN.
+
+Half-Open State (Testing Mode)
+
+Allows few test requests.
+If success → back to CLOSED.
+If failure → back to OPEN.
+
+Circuit breaker is a microservice design pattern that prevents repeated calls to 
+a failing service by temporarily blocking requests after a failure threshold is reached.
+
+properties :
+
+resilience4j.circuitbreaker.instances.customerService.register-health-indicator=true
+resilience4j.circuitbreaker.instances.customerService.sliding-window-size=5
+resilience4j.circuitbreaker.instances.customerService.minimum-number-of-calls=3
+resilience4j.circuitbreaker.instances.customerService.failure-rate-threshold=50
+resilience4j.circuitbreaker.instances.customerService.wait-duration-in-open-state=10s
