@@ -1,0 +1,16 @@
+
+
+Java Code (.java)
+      ↓
+Compiled by javac
+      ↓
+Bytecode (.class)
+      ↓
+Executed by JVM
+
+Important JVM Components
+
+Class Loader – Loads class files
+Memory Areas – Heap, Stack, Method Area
+Execution Engine – Executes bytecode
+Garbage Collector – Removes unused objects

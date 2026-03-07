@@ -1,0 +1,19 @@
+
+
+
+-------------------------------------------------------------------
+| Serializable            | Externalizable            |
+| ----------------------- | ------------------------- |
+| Automatic serialization | Manual serialization      |
+| Easy to use             | More control              |
+| Default mechanism       | Custom read/write methods |
+
+
+| Feature                  | Comparable         | Comparator                |
+| ------------------------ | ------------------ | ------------------------- |
+| Package                  | `java.lang`        | `java.util`               |
+| Method                   | `compareTo()`      | `compare()`               |
+| Sorting Type             | Natural sorting    | Custom sorting            |
+| Location                 | Inside the class   | Separate class            |
+| Number of sorting logics | Only one           | Multiple                  |
+| Example                  | Sort Student by ID | Sort Student by Name, Age |

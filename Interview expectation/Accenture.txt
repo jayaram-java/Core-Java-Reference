@@ -26,3 +26,21 @@ What is SLA?
 Difference between 4xx and 5xx errors?
 
 --------------------------------------------------------
+
+connection timeout 
+socket timeout 
+read timeout 
+
+
+---------------------------------------------
+
+How do you communicate with other services ?
+Abstract and Interface - How to use in java project 
+How do you maintaining the api versioning 
+
+
+
+
+
+
+

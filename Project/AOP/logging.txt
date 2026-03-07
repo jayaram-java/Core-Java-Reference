@@ -101,3 +101,27 @@ SQL logging for better observability and performance.
 
 </Configuration>
 
+-----------------------------------------------------------
+
+How to analyze the logs ?
+
+Using openShift 
+
+
+
+---------------------------------------------------------------
+production support role
+
+ERROR
+WARN
+Stack traces
+
+
+
+
+
+
+
+
+
+

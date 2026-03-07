@@ -20,3 +20,7 @@ Passed to AuthenticationManager
 DaoAuthenticationProvider
 UserDetailsService loads user from DB
 Password checked using PasswordEncoder
+
+------------------------------------------
+
+JWT has header payload signature 

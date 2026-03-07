@@ -1,0 +1,63 @@
+---------------------------------------------------------------------------General Shortcuts
+| Action            | Shortcut                 |
+| ----------------- | ------------------------ |
+| Search Everywhere | **Double Shift**         |
+| Find File         | `Ctrl + Shift + N`       |
+| Find Class        | `Ctrl + N`               |
+| Find Symbol       | `Ctrl + Alt + Shift + N` |
+| Recent Files      | `Ctrl + E`               |
+| Settings          | `Ctrl + Alt + S`         |
+| Close Tab         | `Ctrl + F4`              |
+
+---------------------------------------------------------------------------Editing Shortcuts
+
+| Action            | Shortcut           |
+| ----------------- | ------------------ |
+| Auto Import       | `Alt + Enter`      |
+| Reformat Code     | `Ctrl + Alt + L`   |
+| Optimize Imports  | `Ctrl + Alt + O`   |
+| Duplicate Line    | `Ctrl + D`         |
+| Delete Line       | `Ctrl + Y`         |
+| Comment/Uncomment | `Ctrl + /`         |
+| Block Comment     | `Ctrl + Shift + /` |
+| Rename            | `Shift + F6`       |
+
+---------------------------------------------------------------------------Navigation Shortcuts
+
+| Action               | Shortcut             |
+| -------------------- | -------------------- |
+| Go to Declaration    | `Ctrl + B`           |
+| Go to Implementation | `Ctrl + Alt + B`     |
+| Go to File Structure | `Ctrl + F12`         |
+| Go Back              | `Ctrl + Alt + Left`  |
+| Go Forward           | `Ctrl + Alt + Right` |
+| Go to Line           | `Ctrl + G`           |
+
+
+-----------------------------------------------------------------------------Code Generation
+
+| Action                                | Shortcut         |
+| ------------------------------------- | ---------------- |
+| Generate (getter/setter, constructor) | `Alt + Insert`   |
+| Surround With (try-catch, if)         | `Ctrl + Alt + T` |
+| Implement Methods                     | `Ctrl + I`       |
+| Override Methods                      | `Ctrl + O`       |
+
+-----------------------------------------------------------------------------Running & Debugging
+
+| Action            | Shortcut      |
+| ----------------- | ------------- |
+| Run               | `Shift + F10` |
+| Debug             | `Shift + F9`  |
+| Toggle Breakpoint | `Ctrl + F8`   |
+| Step Over         | `F8`          |
+| Step Into         | `F7`          |
+| Resume Program    | `F9`          |
+
+------------------------------------------------------------------------------Maven Shortcuts
+
+| Action          | Shortcut                        |
+| --------------- | ------------------------------- |
+| Reload Maven    | Open Maven Tool Window → Reload |
+| Build Project   | `Ctrl + F9`                     |
+| Rebuild Project | `Ctrl + Shift + F9`             |

@@ -2,7 +2,9 @@
 Spring Framework :
 
 It is lightweight , loosely coupled and integrated framework for developing enterprise application in java.
-
+Provides embedded server
+Auto-configuration support
+Eliminates XML configuration
 Test ob = new Test(); -Tightly coupled 
 
 Test ob; - loosely coupled 
