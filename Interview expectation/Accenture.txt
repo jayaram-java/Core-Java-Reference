@@ -39,7 +39,7 @@ Abstract and Interface - How to use in java project
 How do you maintaining the api versioning 
 
 
-
+pathvariable and query params
 
 
 

@@ -14,3 +14,7 @@ Class Loader – Loads class files
 Memory Areas – Heap, Stack, Method Area
 Execution Engine – Executes bytecode
 Garbage Collector – Removes unused objects
+
+JDK has jre + libraries. jre has jvm. 
+
+
