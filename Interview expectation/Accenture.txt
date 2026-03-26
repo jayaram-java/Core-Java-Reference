@@ -38,9 +38,27 @@ How do you communicate with other services ?
 Abstract and Interface - How to use in java project 
 How do you maintaining the api versioning 
 
+pathvariable and queryparams
 
-pathvariable and query params
+Typical Timeout Values (Production)
 
+| Timeout                     | Typical Value |
+| --------------------------- | ------------- |
+| Connection Timeout          | 3 – 5 sec     |
+| Read Timeout                | 10 – 30 sec   |
+| Database Connection Timeout | 30 sec        |
+
+
+----------------------------------------------------
+spring.datasource.hikari.connection-timeout=30000
+----------------------------------------------------
+
+RestTemplate Timeout (Spring Boot)
+
+In RestTemplate, the important timeouts are:
+
+Connection Timeout → Time to establish connection
+Read Timeout → Time waiting for response from server
 
 
 
