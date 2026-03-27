@@ -1,0 +1,220 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auth + Spendwise Security Flow Documentation</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #22d3ee;
+      --accent-2: #38bdf8;
+      --border: #1f2937;
+      --code: #0b1020;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, #1e293b 0%, #0f172a 50%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 28px;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    h1, h2, h3 {
+      margin: 0 0 12px 0;
+      line-height: 1.25;
+    }
+    h1 { font-size: 28px; letter-spacing: 0.3px; }
+    h2 { font-size: 22px; margin-top: 28px; }
+    h3 { font-size: 18px; margin-top: 18px; }
+    p { margin: 0 0 12px 0; color: var(--text); }
+    .muted { color: var(--muted); }
+    .card {
+      background: linear-gradient(180deg, rgba(17,24,39,0.96) 0%, rgba(12,18,30,0.96) 100%);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin: 16px 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      background: rgba(34,211,238,0.15);
+      color: var(--accent);
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(34,211,238,0.35);
+      margin-bottom: 8px;
+    }
+    code, pre {
+      font-family: Consolas, "Courier New", monospace;
+      background: var(--code);
+      color: #d1d5db;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+    }
+    pre {
+      padding: 12px;
+      overflow: auto;
+      margin: 8px 0 0 0;
+    }
+    .flow {
+      border-left: 3px solid var(--accent-2);
+      padding-left: 14px;
+      margin: 8px 0;
+    }
+    .step { margin: 8px 0; }
+    .kvs { display: grid; grid-template-columns: 160px 1fr; gap: 8px 12px; }
+    .kvs div { padding: 4px 0; }
+    .pill {
+      display: inline-block;
+      background: rgba(56,189,248,0.18);
+      color: var(--accent-2);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(56,189,248,0.35);
+      font-size: 12px;
+    }
+    .warn {
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      color: #fde68a;
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Authentication, Authorization, and Security Flow</h1>
+    <p class="muted">Based on code in <span class="pill">auth-service</span> and <span class="pill">spendwise-service</span>.</p>
+
+    <div class="card">
+      <div class="tag">High-Level Architecture</div>
+      <div class="grid">
+        <div>
+          <h3>auth-service</h3>
+          <p>Handles registration, login, refresh, logout and JWT creation. Uses Spring Security with a custom <code>JwtAuthenticationFilter</code>.</p>
+          <div class="kvs">
+            <div>Context Path</div><div><code>/authservice</code></div>
+            <div>Public Endpoints</div><div><code>/api/auth/**</code></div>
+            <div>JWT Claims</div><div><code>sub</code> (username), <code>userId</code>, <code>roles</code></div>
+          </div>
+        </div>
+        <div>
+          <h3>spendwise-service</h3>
+          <p>Consumes JWTs from auth-service. Validates tokens and builds a Spring Security authentication with roles.</p>
+          <div class="kvs">
+            <div>Context Path</div><div><code>/expenseservice</code></div>
+            <div>Protected Endpoints</div><div>All except <code>/error</code> and <code>OPTIONS /**</code></div>
+            <div>Method Security</div><div><code>@EnableMethodSecurity</code> + <code>@PreAuthorize</code></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Login Flow (auth-service)</h2>
+    <div class="card flow">
+      <div class="step">1. Client sends <code>POST /authservice/api/auth/login</code> with username/password.</div>
+      <div class="step">2. <code>AuthController.login()</code> calls <code>AuthService.authenticate()</code>.</div>
+      <div class="step">3. <code>AuthenticationManager</code> authenticates via <code>UserDetailsService</code> (<code>CustomUserDetailsService</code> loads <code>User</code>).</div>
+      <div class="step">4. On success, <code>JwtService.generateToken()</code> builds JWT with <code>roles</code> claim and optional <code>userId</code>.</div>
+      <div class="step">5. A refresh token is created and stored in DB; response includes both access token and refresh token.</div>
+    </div>
+
+    <h2>Register Flow (auth-service)</h2>
+    <div class="card flow">
+      <div class="step">1. Client sends <code>POST /authservice/api/auth/register</code>.</div>
+      <div class="step">2. <code>AuthService.register()</code> checks uniqueness, encodes password with <code>BCryptPasswordEncoder</code>.</div>
+      <div class="step">3. Assigns role <code>ROLE_USER</code> if missing.</div>
+      <div class="step">4. Generates JWT + refresh token and returns response.</div>
+    </div>
+
+    <h2>Refresh and Logout (auth-service)</h2>
+    <div class="card flow">
+      <div class="step">Refresh: <code>POST /authservice/api/auth/refresh</code> validates stored refresh token, then issues a new access token.</div>
+      <div class="step">Logout: <code>POST /authservice/api/auth/logout</code> with <code>X-Refresh-Token</code> marks refresh token as revoked.</div>
+    </div>
+
+    <h2>Security Internal Flow (auth-service)</h2>
+    <div class="card">
+      <div class="tag">Filter Chain</div>
+      <p><code>SecurityConfig</code> sets stateless sessions, disables CSRF, allows <code>/api/auth/**</code>, and adds <code>JwtAuthenticationFilter</code> before <code>UsernamePasswordAuthenticationFilter</code>.</p>
+      <div class="flow">
+        <div class="step">1. For protected endpoints, <code>JwtAuthenticationFilter</code> checks <code>Authorization: Bearer &lt;jwt&gt;</code>.</div>
+        <div class="step">2. It extracts username, loads <code>UserDetails</code>, validates token, then sets <code>SecurityContextHolder</code> authentication with authorities from roles/permissions.</div>
+        <div class="step">3. Method security is enabled via <code>@EnableMethodSecurity</code>, so any future <code>@PreAuthorize</code> annotations are enforced.</div>
+      </div>
+    </div>
+
+    <h2>JWT Authentication Filter Flow (spendwise-service)</h2>
+    <div class="card flow">
+      <div class="step">1. <code>JwtAuthenticationFilter</code> reads the <code>Authorization</code> header.</div>
+      <div class="step">2. If header starts with <code>Bearer </code>, token is validated via <code>JwtService.isTokenValid()</code>.</div>
+      <div class="step">3. Username is extracted from <code>sub</code>, roles are read from <code>roles</code> (fallback: <code>authorities</code>).</div>
+      <div class="step">4. Creates <code>UsernamePasswordAuthenticationToken</code> using extracted roles and sets it in the <code>SecurityContext</code>.</div>
+      <div class="step">5. Request proceeds to controllers with authenticated principal and authorities.</div>
+    </div>
+
+    <h2>Method-Level Security (spendwise-service)</h2>
+    <div class="card">
+      <div class="tag">Enabled</div>
+      <p>Method security is enabled with <code>@EnableMethodSecurity</code> in <code>SecurityConfig</code>.</p>
+      <div class="tag">Controller Usage</div>
+      <pre><code>@PreAuthorize("hasRole('ADMIN')") // create/update/delete categories
+@PreAuthorize("hasRole('ADMIN','USER')") // get all categories
+@PreAuthorize("hasAnyRole('ADMIN','USER')") // expense details & reports</code></pre>
+      <div class="warn">
+        Note: <code>hasRole('ADMIN','USER')</code> is not standard Spring Security syntax; usually you should use <code>hasAnyRole('ADMIN','USER')</code>. The code currently has a mix of both, which may affect authorization results.
+      </div>
+    </div>
+
+    <h2>Token Compatibility Between Services</h2>
+    <div class="card">
+      <div class="flow">
+        <div class="step">1. auth-service signs JWT with shared <code>security.jwt.secret</code> (same in both <code>application.yaml</code> files).</div>
+        <div class="step">2. spendwise-service validates token signature and expiry using the same secret.</div>
+        <div class="step">3. Roles embedded by auth-service are used by spendwise method security annotations.</div>
+      </div>
+    </div>
+
+    <h2>Key Classes and Responsibilities</h2>
+    <div class="card grid">
+      <div>
+        <h3>auth-service</h3>
+        <p><code>SecurityConfig</code> - Security filter chain and method security</p>
+        <p><code>AuthController</code> - login/register/refresh/logout endpoints</p>
+        <p><code>AuthService</code> - authentication, refresh token management</p>
+        <p><code>JwtService</code> - JWT creation and validation</p>
+        <p><code>JwtAuthenticationFilter</code> - request authentication</p>
+      </div>
+      <div>
+        <h3>spendwise-service</h3>
+        <p><code>SecurityConfig</code> - Security filter chain and method security</p>
+        <p><code>JwtService</code> - JWT validation and role extraction</p>
+        <p><code>JwtAuthenticationFilter</code> - builds authentication from token</p>
+        <p><code>Expense*Controller</code> - <code>@PreAuthorize</code> checks</p>
+      </div>
+    </div>
+
+    <p class="muted">Generated on 2026-03-27 from the current codebase.</p>
+  </div>
+</body>
+</html>
