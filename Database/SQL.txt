@@ -32,8 +32,56 @@ SELECT * FROM expense_summary;
 A view is a virtual table used for simplifying and securing data access
 -----------------------------------------
 
+-- Order By Queries
+
+SELECT * FROM book_details
+ORDER BY price ASC;
+
+SELECT * FROM book_details
+ORDER BY book_name ASC;
+
+-- Group By Queries
+
+SELECT price, COUNT(*) AS book_count
+FROM book_details
+GROUP BY price;
+
+SELECT price, COUNT(*) AS book_count
+FROM book_details
+GROUP BY price
+HAVING COUNT(*) > 1;
+
+-- Filter and Order Query
+
+SELECT *
+FROM book_details
+WHERE price > 500
+ORDER BY price DESC;
+
+| Feature         | `ORDER BY`               | `GROUP BY`                             |
+| --------------- | ------------------------ | -------------------------------------- |
+| Purpose         | Sort result rows         | Group rows for aggregation             |
+| Used With       | Any columns              | Usually with aggregate functions       |
+| Result Effect   | Changes order of display | Reduces number of rows (one per group) |
+| Clause Position | After `SELECT`           | After `WHERE`, before `ORDER BY`       |
+
+-----------------------------------------------------------------------------------------
+
+| Feature              | Primary Key                                                                                | Foreign Key                                                                                                     |
+| -------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Definition           | A column (or set of columns) that uniquely identifies each record in a table.              | A column (or set of columns) that links two tables together. It refers to the Primary Key in another table.     |
+| Uniqueness           | Must be unique — no two rows can have the same primary key value.                          | Can have duplicate values.                                                                                      |
+| NULL values          | Not allowed — Primary key columns cannot be NULL.                                          | Allowed — Foreign key columns can be NULL.                                                                      |
+| Purpose              | Used to uniquely identify each record in a table.                                          | Used to maintain referential integrity between tables.                                                          |
+| Number per table     | Only one primary key per table (but it can consist of multiple columns — a composite key). | Can have multiple foreign keys in a table.                                                                      |
+| Defined on           | Defined within the same table where it uniquely identifies a record.                       | Defined in a child table, referencing the parent table’s primary key.                                           |
 
 
+----------------------------------------------------------
 
+CREATE UNIQUE INDEX idx_email ON users(email);
 
+primary key is default index
+
+Index = Performance booster for SELECT queries by avoiding full table scan
 

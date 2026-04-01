@@ -50,3 +50,33 @@ resilience4j.circuitbreaker.instances.customerService.sliding-window-size=5
 resilience4j.circuitbreaker.instances.customerService.minimum-number-of-calls=3
 resilience4j.circuitbreaker.instances.customerService.failure-rate-threshold=50
 resilience4j.circuitbreaker.instances.customerService.wait-duration-in-open-state=10s
+
+
+         ┌───────────────┐
+         │   CLOSED      │  (Normal flow)
+         │               │
+         │ Collect calls │
+         └──────┬────────┘
+                │
+                │ Failure rate >= 50%
+                ▼
+         ┌───────────────┐
+         │     OPEN      │  (Stop calls)
+         │               │
+         │ Wait 10 sec   │
+         └──────┬────────┘
+                │ After 10 sec
+                ▼
+         ┌───────────────┐
+         │ HALF-OPEN     │ (Trial calls)
+         │               │
+         │ Few requests  │
+         └──────┬────────┘
+                │
+        ┌───────┴─────────┐
+        ▼                 ▼
+   Success           Failure
+    ▼                   ▼
+CLOSED again        OPEN again
+
+https://chatgpt.com/share/69cb5519-fc9c-83e8-aeac-ae5f13e7c40b

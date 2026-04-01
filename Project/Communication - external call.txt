@@ -64,3 +64,29 @@ restClient.get()
           .retrieve()
           .body(String.class);
 
+------------------------------------------
+
+web client 
+
+WebClient is a modern, non-blocking(async), reactive HTTP client introduced in Spring WebFlux as part of the Spring ecosystem.
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+
+WebClient webClient = WebClient.builder()
+    .baseUrl("https://api.example.com")
+    .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+    .build();
+	
+	RestTemplate  vs  RestClient  vs  WebClient
+	
+	| Feature        | RestTemplate | RestClient      | WebClient      |
+| -------------- | ------------ | --------------- | -------------- |
+| Type           | Blocking     | Blocking        | Non-blocking   |
+| Spring Version | Old          | Spring 6+       | Spring 5+      |
+| API Style      | Old          | Fluent (modern) | Reactive       |
+| Performance    | Low          | Medium          | High           |
+| Streaming      | ❌            | ❌               | ✅              |
+| Recommended    | ❌            | ✅ (sync apps)   | ✅ (async apps) |
