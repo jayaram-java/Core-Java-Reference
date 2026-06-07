@@ -1,0 +1,293 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExpenseMgmt React Cheat Sheet</title>
+    <style>
+      :root {
+        --bg: #0f1219;
+        --panel: #171b26;
+        --text: #e7eaf1;
+        --muted: #9aa3b2;
+        --accent: #7dd3fc;
+        --accent-2: #a7f3d0;
+        --border: #2a3040;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font: 16px/1.6 "Segoe UI", system-ui, sans-serif;
+        background: radial-gradient(circle at top, #1d2434, var(--bg));
+        color: var(--text);
+        padding: 32px;
+      }
+      h1, h2, h3 {
+        line-height: 1.2;
+        margin: 0 0 12px;
+      }
+      h1 {
+        font-size: 32px;
+      }
+      h2 {
+        font-size: 22px;
+        margin-top: 28px;
+      }
+      h3 {
+        font-size: 18px;
+        margin-top: 18px;
+      }
+      p {
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px 22px;
+      }
+      code, pre {
+        background: #0d1117;
+        border: 1px solid #1f2633;
+        border-radius: 10px;
+      }
+      code {
+        padding: 2px 6px;
+        color: var(--accent);
+      }
+      pre {
+        padding: 14px;
+        overflow: auto;
+        color: #e5e7eb;
+      }
+      ul {
+        padding-left: 18px;
+        margin: 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 14px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 4px 8px;
+        background: rgba(125, 211, 252, 0.12);
+        border: 1px solid rgba(125, 211, 252, 0.4);
+        border-radius: 8px;
+        color: var(--accent);
+        font-size: 12px;
+        margin-right: 8px;
+      }
+      .note {
+        color: var(--accent-2);
+      }
+      .flow {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 10px;
+        background: #0c1018;
+      }
+      .footer {
+        font-size: 13px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="card">
+        <h1>ExpenseMgmt React Cheat Sheet</h1>
+        <p>
+          Beginner interview-ready summary of Hooks, Router, Props, and the
+          Container/Presenter pattern used in the project.
+        </p>
+        <p>
+          Project paths used: <code>src/features/login</code>,
+          <code>src/features/dashboard</code>, <code>src/components</code>.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>1) Hooks Cheat Sheet</h2>
+        <div class="grid">
+          <div>
+            <h3><span class="tag">useState</span> Local state</h3>
+            <p>Store and update component state.</p>
+            <pre><code>const [email, setEmail] = useState('')
+setEmail('student@example.com')</code></pre>
+            <p class="note">Used in Login and Dashboard containers.</p>
+          </div>
+          <div>
+            <h3><span class="tag">useEffect</span> Side effects</h3>
+            <p>Run code when component mounts or dependencies change.</p>
+            <pre><code>useEffect(() => {
+  document.title = 'Login | Expense Manager'
+}, [])</code></pre>
+            <p class="note">Used for title updates and localStorage sync.</p>
+          </div>
+          <div>
+            <h3><span class="tag">useMemo</span> Derived values</h3>
+            <p>Memoize expensive computations.</p>
+            <pre><code>const total = useMemo(() =>
+  expenses.reduce((sum, e) => sum + e.amount, 0)
+, [expenses])</code></pre>
+            <p class="note">Used to compute the dashboard total.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>2) React Router Cheat Sheet</h2>
+        <p>
+          Routes live in <code>src/App.tsx</code>. Main paths:
+          <code>/</code> (Login) and <code>/dashboard</code> (Dashboard).
+        </p>
+        <pre><code>&lt;BrowserRouter&gt;
+  &lt;Routes&gt;
+    &lt;Route path="/" element={&lt;LoginContainer /&gt;} /&gt;
+    &lt;Route path="/dashboard" element={&lt;DashboardContainer /&gt;} /&gt;
+  &lt;/Routes&gt;
+&lt;/BrowserRouter&gt;</code></pre>
+        <div class="grid">
+          <div>
+            <h3>useNavigate</h3>
+            <p>Programmatic navigation (login, logout).</p>
+            <pre><code>const navigate = useNavigate()
+navigate('/dashboard')</code></pre>
+          </div>
+          <div>
+            <h3>useLocation</h3>
+            <p>Read router state (passed userName).</p>
+            <pre><code>const location = useLocation()
+const name = location.state?.userName</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>3) Props Cheat Sheet</h2>
+        <p>
+          Props are data passed from parent to child. The project uses a
+          <strong>Container</strong> (logic/state) +
+          <strong>Presenter</strong> (UI) split.
+        </p>
+        <pre><code>// Container passes props to Presenter
+&lt;LoginPresenter
+  email={email}
+  password={password}
+  onEmailChange={setEmail}
+  onSubmit={handleSubmit}
+/&gt;</code></pre>
+        <div class="grid">
+          <div>
+            <h3>Container</h3>
+            <ul>
+              <li>Owns state and hooks</li>
+              <li>Handles events and side effects</li>
+              <li>Passes data + handlers as props</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Presenter</h3>
+            <ul>
+              <li>Receives props only</li>
+              <li>Renders UI</li>
+              <li>Calls handlers on user actions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>4) Component Pattern Used</h2>
+        <p>
+          <strong>Reusable components</strong>: Header and Footer live in
+          <code>src/components</code>. They receive props like
+          <code>userName</code> and <code>onLogout</code>.
+        </p>
+        <pre><code>// Header props
+&lt;Header title="Expense Manager" userName={userName} onLogout={onLogout} /&gt;</code></pre>
+      </section>
+
+      <section class="card">
+        <h2>5) Typical Usage Flow</h2>
+        <svg class="flow" viewBox="0 0 980 260" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .box { fill: #141a24; stroke: #2b3242; stroke-width: 2; }
+              .text { fill: #e7eaf1; font: 14px Segoe UI, sans-serif; }
+              .muted { fill: #9aa3b2; font: 12px Segoe UI, sans-serif; }
+              .arrow { stroke: #7dd3fc; stroke-width: 2; marker-end: url(#arrow); }
+            </style>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <polygon points="0 0, 10 3, 0 6" fill="#7dd3fc" />
+            </marker>
+          </defs>
+
+          <rect class="box" x="20" y="30" width="200" height="70" rx="10" />
+          <text class="text" x="36" y="60">Login Page</text>
+          <text class="muted" x="36" y="78">useState + useEffect</text>
+
+          <rect class="box" x="260" y="30" width="220" height="70" rx="10" />
+          <text class="text" x="276" y="60">LoginContainer</text>
+          <text class="muted" x="276" y="78">Validate + Navigate</text>
+
+          <rect class="box" x="520" y="30" width="220" height="70" rx="10" />
+          <text class="text" x="536" y="60">Router</text>
+          <text class="muted" x="536" y="78">/dashboard</text>
+
+          <rect class="box" x="760" y="30" width="200" height="70" rx="10" />
+          <text class="text" x="776" y="60">Dashboard</text>
+          <text class="muted" x="776" y="78">useMemo + list</text>
+
+          <line class="arrow" x1="220" y1="65" x2="260" y2="65" />
+          <line class="arrow" x1="480" y1="65" x2="520" y2="65" />
+          <line class="arrow" x1="740" y1="65" x2="760" y2="65" />
+
+          <rect class="box" x="260" y="150" width="460" height="70" rx="10" />
+          <text class="text" x="280" y="178">Header + Footer (Reusable Components)</text>
+          <text class="muted" x="280" y="196">Props flow from DashboardContainer</text>
+        </svg>
+        <p class="note">Flow: Login -> navigate -> Dashboard -> Logout -> Login.</p>
+      </section>
+
+      <section class="card">
+        <h2>6) Quick Interview Questions (Beginner)</h2>
+        <ul>
+          <li>What is the difference between props and state?</li>
+          <li>When would you use useEffect?</li>
+          <li>How does React Router decide which page to show?</li>
+          <li>Why split Container and Presenter components?</li>
+          <li>What happens when state changes?</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>7) One-Minute Summary</h2>
+        <p>
+          The app uses React Router for page navigation. Each page has a
+          Container for state + hooks and a Presenter for UI. State is handled
+          with useState, side effects with useEffect, and derived totals with
+          useMemo. Reusable components (Header/Footer) receive props and display
+          data without owning state.
+        </p>
+      </section>
+
+      <section class="card footer">
+        <p>Generated for beginner interview prep.</p>
+      </section>
+    </div>
+  </body>
+</html>

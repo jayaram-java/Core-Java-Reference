@@ -1,0 +1,31 @@
+ES6+ Features - Questions and Answers
+
+1. Explain destructuring in JavaScript with examples.
+Answer: Destructuring extracts values from arrays/objects: const {a} = obj; const [x,y]=arr; supports defaults and renaming.
+
+2. What are template literals and tagged templates?
+Answer: Template literals use backticks with ${} interpolation; tagged templates let a function parse the literal for custom processing.
+
+3. Explain default parameters and rest/spread operators.
+Answer: Default parameters give fallback values; rest (...args) gathers; spread (...) expands arrays/objects or arguments.
+
+4. What are modules in JavaScript? Explain ES modules vs CommonJS.
+Answer: ES modules use import/export and are static; CommonJS uses require/module.exports and is dynamic. ESM is standard in browsers and modern Node.
+
+5. What are symbols and when would you use them?
+Answer: Symbols are unique identifiers used as non-colliding property keys; useful for meta properties or avoiding name conflicts.
+
+6. Explain iterators and generators. Provide a use case.
+Answer: Iterators implement next(); generators (function*) produce iterators with yield. Use for lazy sequences or custom iteration.
+
+7. What are promises? Explain states and chaining.
+Answer: Promises represent async results with states: pending, fulfilled, rejected. Chain with then/catch/finally.
+
+8. What is async/await? How does it improve readability?
+Answer: async/await is syntax over Promises, letting async code read like sync and handling errors with try/catch.
+
+9. How do you handle errors in async code?
+Answer: Handle async errors with try/catch in async functions or .catch on Promises; propagate or wrap as needed.
+
+10. Explain optional chaining and nullish coalescing.
+Answer: Optional chaining (?.) safely accesses nested props; nullish coalescing (??) uses right side only for null/undefined.

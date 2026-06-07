@@ -1,0 +1,140 @@
+
+I'm good
+
+yes
+-------------------------- introduction
+
+I've around 6.6 years experience in java 
+Currently I'm working on the react and java spring boot.
+
+--------------------------- date to day task
+
+my roles and responsibilty - developing application , fixing the bug , 
+
+we used have standup calls and following agile methodology
+
+------------------------------- design pattern 
+
+we have so many design pattern. Single ton pattern. by using private constructor. 
+
+------------------------------------ how can we create single ton pattern in spring boot ?
+| Scope     | Description                     |
+| --------- | ------------------------------- |
+| singleton | One object per Spring container |
+| prototype | New object every request        |
+| request   | One object per HTTP request     |
+| session   | One object per HTTP session     |
+-------------------------------------------------------
+payment processing module - new provider - doesn't require major thing
+
+interface - we need to do. we can implement that method 
+
+solid principle 
+
+--------------------------------------------------------------------------
+using load balancing - these comes under microservices 
+
+threadpool executor and join pool  - general purpose - we can create size 
+supply size 
+join pool - divide and concure call -
+
+-----------------------------------------------------------------------
+
+concurrency environment 
+
+concurrency will be asynchronously. It should not depends upon the project.
+
+small kind of application. services will be much bigger
+
+-----------------------------------------------------------------
+two threads calling put. what will happen ?
+
+If two threads call put() simultaneously on a HashMap, 
+it may cause data inconsistency because HashMap is not thread-safe.
+
+Using ConcurrentHashMap allows concurrent put() operations safely.
+If both threads update the same key, the latest write wins.
+
+-----------------------------------------------------------------------
+
+let say you're creating microservices - if you're creating microservice 
+
+
+------------------------------------------------------------------------ 
+
+N + 1 query problem = join query + lazy loading + batch fetching  + pagination 
+
+--------------------------------------------------------------------------
+
+spring data jpa 
+
+easy access to the db 
+
+--------------------------------------------------
+
+batch updates - transaction too long - what we can do ? - async - redis 
+
+-------------------------------------------------
+
+memory leak in java 
+
+heap memory keeps growing
+GC runs frequently
+application becomes slow
+finally → OutOfMemoryError
+
+Automatically identify and remove unused objects from memory (heap).
+
+--------------------------------------------------------- mentor junior
+
+technical knowledge
+communication level
+debugging capability
+confidence level
+
+During PR(Pull request) review:
+
+explain WHY changes are needed
+discuss performance/security/readability
+
+--------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

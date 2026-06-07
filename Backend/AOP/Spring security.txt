@@ -23,10 +23,6 @@ What is SecurityFilterChain?
 It is a chain of servlet filters that intercept every HTTP request 
 and apply security rules like authentication and authorization.
 
-What is UserDetailsService?
-
-It is used to load user-specific data 
-(username, password, roles) during authentication.
 
 What is AuthenticationManager?
 
@@ -37,6 +33,12 @@ What is AuthenticationProvider?
 
 It performs the actual authentication 
 logic (e.g., validating username/password).
+
+What is UserDetailsService?
+
+It is used to load user-specific data 
+(username, password, roles) during authentication.
+
 
 What is PasswordEncoder?
 

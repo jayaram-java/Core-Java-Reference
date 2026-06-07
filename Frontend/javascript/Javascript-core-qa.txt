@@ -1,0 +1,65 @@
+Core JavaScript - Questions and Answers
+
+1. Explain the difference between var, let, and const. When would you use each?
+Answer: var is function-scoped, hoisted and can be re-declared; let is block-scoped,
+ hoisted but in TDZ, cannot be re-declared; const is block-scoped, must be initialized once, 
+ cannot be re-assigned (object contents can still change). Use const by default, 
+ let when reassigning, avoid var in modern code.
+
+2. What are the different JavaScript data types? How do primitive and reference types differ?
+Answer: Primitive types: string, number, bigint, boolean, undefined, symbol, null. Reference types: object (including arrays, functions). Primitives are copied by value; references are copied by reference (pointer to the same object).
+
+3. Explain hoisting with examples for functions and variables.
+Answer: Hoisting moves declarations to the top of their scope. Function declarations are hoisted with body; var is hoisted with undefined. let/const are hoisted but uninitialized (TDZ). Example: calling a function declaration before definition works; accessing var before assignment yields undefined; accessing let/const before declaration throws ReferenceError.
+
+4. What is the temporal dead zone (TDZ) in ES6?
+Answer: TDZ is the period between entering a block and the let/const declaration being evaluated, 
+during which access throws ReferenceError.
+
+5. Explain scope: global, function, and block scope. How does lexical scope work?
+Answer: Scope: global (whole program), function (within function body), block (within {} with let/const). Lexical scope means scope is determined by where code is written, not how it is called.
+
+6. What is the difference between == and ===? When is Object.is useful?
+Answer: == performs type coercion; === checks type and value. Object.is is like === but treats NaN as equal to NaN and distinguishes +0 and -0.
+
+7. How does JavaScript handle type coercion? Provide an example of implicit and explicit coercion.
+Answer: Coercion converts types. Implicit: '5' * 2 becomes 10. Explicit: Number('5') gives 5, Boolean(0) gives false.
+
+8. What are truthy and falsy values in JavaScript?
+Answer: Falsy: false, 0, -0, 0n, '', null, undefined, NaN. Everything else is truthy.
+
+9. Explain the event loop. How do the call stack, task queue, and microtask queue work together?
+Answer: Call stack runs sync code; tasks (macrotasks) like setTimeout go to task queue; microtasks (Promise callbacks) run after current stack before next task. The loop keeps pulling work from queues.
+
+10. What is the difference between microtasks and macrotasks? Give examples.
+Answer: Microtasks: Promise.then/catch/finally, queueMicrotask. Macrotasks: setTimeout, setInterval, DOM events, I/O. Microtasks run before the next macrotask.
+
+11. Explain closures with a practical example.
+Answer: A closure is when a function remembers variables from its outer scope even after the outer function returns. Example: function makeCounter(){let c=0; return ()=>++c;}.
+
+12. What is the difference between call, apply, and bind?
+Answer: call invokes with explicit this and args list; apply is same but args array; bind returns a new function with this and optional preset args.
+
+13. How does the "this" keyword work in JavaScript? Explain its behavior in different contexts.
+Answer: this depends on call site: global (window/undefined in strict), method call (object), constructor (new instance), explicit (call/apply/bind), arrow functions capture lexical this.
+
+14. What are arrow functions and how do they differ from regular functions?
+Answer: Arrow functions are concise, lexically bind this/arguments, cannot be used as constructors, and have implicit return for single expressions.
+
+15. What is a higher-order function? Provide an example.
+Answer: A higher-order function takes or returns functions. Example: array.map(fn).
+
+16. Explain prototype inheritance and the prototype chain.
+Answer: Objects inherit from another object via [[Prototype]]. Property lookup walks the prototype chain until found or null.
+
+17. What is the difference between Object.create and class-based inheritance?
+Answer: Object.create creates an object with specified prototype directly; class syntax is sugar over prototypes with constructor and methods on prototype.
+
+18. What are getter and setter functions? When would you use them?
+Answer: Getters/setters define property access logic, useful for validation, computed properties, or encapsulation.
+
+19. Explain immutability and how to achieve it in JavaScript.
+Answer: Immutability means not changing existing data. Use const, Object.freeze for shallow immutability, or copy with spread/structuredClone for updates.
+
+20. What is strict mode and why is it useful?
+Answer: Strict mode ('use strict') removes silent errors, disallows some syntax (with), and makes this undefined in functions called without a receiver.

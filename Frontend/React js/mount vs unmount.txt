@@ -1,0 +1,56 @@
+🏠 Mount = Entering a House
+
+Imagine a house 🏡:
+
+When you enter the house, everything starts:
+Lights turn on 💡
+Fan starts 🌀
+TV may switch on 📺
+
+👉 This is like Mounting
+
+Component is created and added to the screen
+Initial setup happens
+Example: API call, event listeners, timers start
+
+💻 In React:
+
+useEffect(() => { ... }, []) → runs on mount
+🚪 Unmount = Leaving the House
+
+Now when you leave the house:
+
+Lights turn off 💡❌
+Fan stops 🌀❌
+TV is switched off 📺❌
+
+👉 This is like Unmounting
+
+Component is removed from the screen
+Cleanup happens
+Example: clear timers, remove listeners, cancel API calls
+
+💻 In React:
+
+useEffect(() => { return () => { ... } }, []) → cleanup on unmount
+📱 Real App Example
+
+Think of a Dashboard page:
+
+Mount:
+User opens dashboard
+Data loads from API
+Charts render
+Unmount:
+User navigates to another page (e.g., Settings)
+Stop API polling
+Remove listeners
+
+⚡ Quick Summary
+
+| Concept | Real Life   | React Meaning               |
+| ------- | ----------- | --------------------------- |
+| Mount   | Enter house | Component appears on screen |
+| Unmount | Leave house | Component removed & cleaned |
+
+

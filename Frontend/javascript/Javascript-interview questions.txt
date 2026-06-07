@@ -1,0 +1,132 @@
+JavaScript Interview Questions (Full Stack Developer, 6 Years Experience)
+
+Core JavaScript
+1. Explain the difference between var, let, and const. When would you use each?
+2. What are the different JavaScript data types? How do primitive and reference types differ?
+3. Explain hoisting with examples for functions and variables.
+4. What is the temporal dead zone (TDZ) in ES6?
+5. Explain scope: global, function, and block scope. How does lexical scope work?
+6. What is the difference between == and ===? When is Object.is useful?
+7. How does JavaScript handle type coercion? Provide an example of implicit and explicit coercion.
+8. What are truthy and falsy values in JavaScript?
+9. Explain the event loop. How do the call stack, task queue, and microtask queue work together?
+10. What is the difference between microtasks and macrotasks? Give examples.
+11. Explain closures with a practical example.
+12. What is the difference between call, apply, and bind?
+13. How does the "this" keyword work in JavaScript? Explain its behavior in different contexts.
+14. What are arrow functions and how do they differ from regular functions?
+15. What is a higher-order function? Provide an example.
+16. Explain prototype inheritance and the prototype chain.
+17. What is the difference between Object.create and class-based inheritance?
+18. What are getter and setter functions? When would you use them?
+19. Explain immutability and how to achieve it in JavaScript.
+20. What is strict mode and why is it useful?
+
+ES6+ Features
+21. Explain destructuring in JavaScript with examples.
+22. What are template literals and tagged templates?
+23. Explain default parameters and rest/spread operators.
+24. What are modules in JavaScript? Explain ES modules vs CommonJS.
+25. What are symbols and when would you use them?
+26. Explain iterators and generators. Provide a use case.
+27. What are promises? Explain states and chaining.
+28. What is async/await? How does it improve readability?
+29. How do you handle errors in async code?
+30. Explain optional chaining and nullish coalescing.
+
+DOM, Browser, and Web APIs
+31. Explain event bubbling, capturing, and delegation.
+32. How do you prevent default behavior and stop propagation?
+33. What is the difference between localStorage, sessionStorage, and cookies?
+34. What is CORS and how do you handle it on client and server?
+35. Explain the same-origin policy.
+36. What is a service worker? How is it used for caching?
+37. Explain the critical rendering path in the browser.
+38. How do reflow and repaint differ?
+39. What are Web Workers and when would you use them?
+40. Explain the Fetch API vs XMLHttpRequest.
+
+Asynchronous Patterns
+41. How does Promise.all differ from Promise.allSettled, race, and any?
+42. What is debouncing and throttling? Provide use cases.
+43. How do you implement retry logic with exponential backoff?
+44. Explain the concept of idempotency in API calls.
+45. What is a race condition? Provide a JavaScript example.
+
+Data Structures and Algorithms (JS Focus)
+46. Explain how Map and Set differ from Object and Array.
+47. What are WeakMap and WeakSet and when are they useful?
+48. How would you implement a simple LRU cache in JavaScript?
+49. Explain time complexity for common array operations (push, pop, shift, unshift, splice).
+50. How would you deep clone an object? Discuss limitations.
+
+Testing and Tooling
+51. What is the difference between unit, integration, and end-to-end testing?
+52. How do you mock functions and network calls in JavaScript tests?
+53. What are snapshots in UI testing and when are they useful or harmful?
+54. What is tree-shaking and how does it work in bundlers?
+55. Explain source maps and their role in debugging.
+56. What is the purpose of Babel and how does it differ from TypeScript?
+57. Explain ESLint and Prettier. How do you enforce consistent code style?
+
+TypeScript (Common for Full Stack Roles)
+58. What are the main differences between TypeScript and JavaScript?
+59. Explain interfaces vs types. When would you use each?
+60. What are generics? Provide a simple example.
+61. Explain type narrowing and control flow analysis.
+62. What is the "unknown" type and how is it different from "any"?
+63. How do you type async functions and Promises in TypeScript?
+
+Node.js and Backend
+64. Explain the Node.js event loop and how it differs from the browser event loop.
+65. How does Node.js handle I/O operations efficiently?
+66. What is the difference between process.nextTick, setImmediate, and setTimeout?
+67. What are streams in Node.js? Explain readable, writable, duplex, and transform streams.
+68. How do you handle backpressure in streams?
+69. What are common security risks in Node.js applications (e.g., injection, prototype pollution) and how do you mitigate them?
+70. Explain middleware in Express. How does it work?
+71. How do you structure a Node.js project for maintainability?
+72. What is the difference between REST and GraphQL? When would you choose each?
+73. How do you handle authentication and authorization in a Node.js app?
+74. Explain JWT: structure, signing, verification, and common pitfalls.
+75. How do you manage configuration and secrets across environments?
+
+Databases and Data Layer
+76. Compare SQL and NoSQL databases. When would you choose each?
+77. What are database transactions and isolation levels?
+78. Explain indexing and how it affects performance.
+79. What is the N+1 query problem? How do you prevent it?
+80. How do you design database schema for scalability?
+81. What is ORM? Pros and cons?
+82. How do you handle migrations in production systems?
+
+System Design and Architecture
+83. How would you design a scalable API for a high-traffic application?
+84. Explain horizontal vs vertical scaling.
+85. What is caching? Where would you apply it in a full stack system?
+86. Explain CDN usage and benefits.
+87. What is rate limiting and how would you implement it?
+88. How would you design an audit logging system?
+89. What is eventual consistency? Provide an example.
+90. How do you design for high availability and disaster recovery?
+
+Performance and Optimization
+91. How do you measure front-end performance? Name key metrics (e.g., LCP, FID, CLS).
+92. What is code splitting and how does it improve performance?
+93. How do you optimize React/Angular/Vue apps for performance?
+94. What are common causes of memory leaks in JavaScript and how do you detect them?
+95. How do you optimize server response times in Node.js?
+96. Explain HTTP/1.1 vs HTTP/2 vs HTTP/3 differences relevant to web apps.
+
+Security
+97. What is XSS and how do you prevent it?
+98. What is CSRF and how do you mitigate it?
+99. What is clickjacking and how do you prevent it?
+100. How do you safely handle user input in both client and server?
+
+Behavioral/Practical
+101. Describe a challenging bug you fixed in a full stack project. What was your approach?
+102. Describe a time you improved performance significantly. What did you measure and change?
+103. How do you approach code reviews to ensure quality and team alignment?
+104. How do you handle conflicting requirements from product and engineering?
+105. Describe how you mentor junior developers or onboard new teammates.

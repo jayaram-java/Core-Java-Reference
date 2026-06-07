@@ -1,0 +1,283 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Core Java Quick Reference - Interview</title>
+  <style>
+    :root {
+      --bg: #f6f5f1;
+      --ink: #1f2933;
+      --muted: #5b6770;
+      --card: #ffffff;
+      --accent: #0b6e4f;
+      --accent-2: #d97706;
+      --border: #e5e2d9;
+      --mono: "Consolas", "Courier New", monospace;
+      --sans: "Segoe UI", "Tahoma", "Arial", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: radial-gradient(1200px 600px at 20% -10%, #fff6e5 0%, var(--bg) 60%);
+    }
+    header {
+      padding: 28px 24px 8px 24px;
+    }
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 28px;
+      letter-spacing: 0.2px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      padding: 16px 24px 28px 24px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 14px 12px 14px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+    }
+    h2 {
+      font-size: 15px;
+      margin: 0 0 8px 0;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    ul {
+      margin: 0;
+      padding-left: 16px;
+    }
+    li {
+      margin: 6px 0;
+      line-height: 1.35;
+    }
+    code {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      background: #f3f1ea;
+      padding: 1px 5px;
+      border-radius: 6px;
+    }
+    .note {
+      margin-top: 10px;
+      padding: 8px 10px;
+      background: #fff3d9;
+      border: 1px dashed #f2c97d;
+      border-radius: 10px;
+      color: #7a4f07;
+      font-size: 12.5px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #e8f3ee;
+      color: #0b6e4f;
+      font-size: 11.5px;
+      margin-right: 6px;
+    }
+    .footer {
+      padding: 0 24px 24px 24px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    .table th, .table td {
+      border: 1px solid var(--border);
+      padding: 6px 8px;
+      text-align: left;
+    }
+    .table th {
+      background: #f2efe6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Core Java Quick Reference - Interview</h1>
+    <div class="subtitle">Based on concepts in CoreJavaMastery | Updated: 2026-03-14</div>
+  </header>
+
+  <section class="grid">
+    <div class="card">
+      <h2>OOPs Basics</h2>
+      <ul>
+        <li>Four pillars: Encapsulation, Inheritance, Polymorphism, Abstraction.</li>
+        <li>Encapsulation: private fields + getters/setters (data hiding).</li>
+        <li>Inheritance: reuse via <code>extends</code>; promotes is-a relation.</li>
+        <li>Polymorphism: method overriding + dynamic dispatch.</li>
+        <li>Abstraction: abstract class vs interface (contracts).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Classes & Modifiers</h2>
+      <ul>
+        <li><code>final</code> class cannot be extended; <code>final</code> method not overridden.</li>
+        <li><code>static</code> members belong to class, not instance.</li>
+        <li>Interfaces can have <code>default</code> and <code>static</code> methods (Java 8+).</li>
+        <li>Constructors: no return type, used for initialization.</li>
+        <li>Singleton pattern: private constructor + static instance getter.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>String Concepts</h2>
+      <ul>
+        <li>String is immutable and <code>final</code>.</li>
+        <li>Literal strings stored in String Constant Pool.</li>
+        <li><code>==</code> compares references; <code>equals()</code> compares content.</li>
+        <li><code>StringBuilder</code> is mutable, fast, not thread-safe.</li>
+        <li><code>StringBuffer</code> is mutable, thread-safe, slower.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Exceptions</h2>
+      <ul>
+        <li>Exception disrupts normal flow; handled with <code>try-catch-finally</code>.</li>
+        <li>Checked: compile-time (e.g., <code>IOException</code>).</li>
+        <li>Unchecked: runtime (e.g., <code>NullPointerException</code>).</li>
+        <li><code>finally</code> executes regardless of exception.</li>
+        <li>Custom exceptions by extending <code>RuntimeException</code> or <code>Exception</code>.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Multithreading</h2>
+      <ul>
+        <li>Thread is a lightweight process; use <code>Thread</code> or <code>Runnable</code>.</li>
+        <li>Life cycle: New -> Runnable -> Running -> Terminated.</li>
+        <li><code>sleep(ms)</code> pauses current thread; does not release lock.</li>
+        <li><code>join()</code> waits for another thread to finish.</li>
+        <li><code>wait()</code> releases lock; <code>notify()</code> wakes one waiting thread.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Collections Overview</h2>
+      <ul>
+        <li><span class="pill">Collection</span> root interface (List, Set, Queue).</li>
+        <li><span class="pill">Collections</span> utility class: sort, reverse, shuffle, max, min.</li>
+        <li>Best practice: program to interface (<code>List</code> vs <code>ArrayList</code>).</li>
+      </ul>
+      <div class="note">List allows duplicates; Set ensures uniqueness; Queue is FIFO.</div>
+    </div>
+
+    <div class="card">
+      <h2>List Implementations</h2>
+      <ul>
+        <li><code>ArrayList</code>: dynamic array, fast access, allows nulls/duplicates.</li>
+        <li><code>LinkedList</code>: doubly linked, faster insert/delete in middle.</li>
+        <li><code>Vector</code>: synchronized, thread-safe, slower.</li>
+        <li>Generic list is type-safe; raw list allows mixed types.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Set Implementations</h2>
+      <ul>
+        <li><code>HashSet</code>: unique, no order, allows one null.</li>
+        <li><code>LinkedHashSet</code>: unique + insertion order.</li>
+        <li><code>TreeSet</code>: sorted, no duplicates, typically no null.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Queue</h2>
+      <ul>
+        <li><code>PriorityQueue</code>: head is smallest by natural order.</li>
+        <li><code>offer()</code> inserts, <code>poll()</code> removes head.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Map Basics</h2>
+      <ul>
+        <li>Stores key-value pairs; keys are unique.</li>
+        <li>Views: <code>keySet()</code>, <code>values()</code>, <code>entrySet()</code>.</li>
+        <li><code>HashMap</code> uses buckets; collisions handled by list/tree.</li>
+        <li><code>LinkedHashMap</code> preserves insertion order.</li>
+        <li><code>TreeMap</code> keeps keys sorted.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Comparable vs Comparator</h2>
+      <ul>
+        <li><code>Comparable</code>: natural ordering via <code>compareTo</code>.</li>
+        <li><code>Comparator</code>: external ordering, supports multiple sort keys.</li>
+        <li>Use Comparator when sorting by salary, name, date, etc.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Java 8: Lambda & Streams</h2>
+      <ul>
+        <li>Lambda: concise implementation of functional interfaces.</li>
+        <li>Functional interfaces: <code>Predicate</code>, <code>Function</code>, <code>Consumer</code>, <code>Supplier</code>, <code>Runnable</code>.</li>
+        <li>Streams: <code>filter</code>, <code>map</code>, <code>collect</code> for data processing.</li>
+        <li>Example: <code>list.stream().filter(x -> x % 2 == 0).collect(...)</code>.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>IO & Serialization</h2>
+      <ul>
+        <li><code>File</code> represents file or directory path.</li>
+        <li>Streams: <code>FileInputStream</code> / <code>FileOutputStream</code>.</li>
+        <li><code>Serializable</code> for object to byte-stream conversion.</li>
+        <li><code>Externalizable</code> gives manual control of serialization.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Common Coding Rounds</h2>
+      <ul>
+        <li>First non-repeated character in a string.</li>
+        <li>Second highest number in array.</li>
+        <li>Factorial, selection sort, matrix multiplication.</li>
+        <li>Even numbers with streams vs loops.</li>
+        <li>Pattern printing (right-angled triangle).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Quick Differences</h2>
+      <table class="table">
+        <thead>
+          <tr><th>Topic</th><th>Key Point</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>==</code> vs <code>equals()</code></td><td>Reference vs content comparison</td></tr>
+          <tr><td>String vs StringBuilder</td><td>Immutable vs mutable</td></tr>
+          <tr><td>Checked vs Unchecked</td><td>Compile-time vs runtime</td></tr>
+          <tr><td>ArrayList vs LinkedList</td><td>Access speed vs insert/delete speed</td></tr>
+          <tr><td>HashSet vs TreeSet</td><td>Unordered vs sorted</td></tr>
+          <tr><td>HashMap vs TreeMap</td><td>Unordered vs sorted keys</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="footer">
+    Tip: Keep answers crisp. Mention use-cases and tradeoffs. Use small code examples if asked.
+  </div>
+</body>
+</html>

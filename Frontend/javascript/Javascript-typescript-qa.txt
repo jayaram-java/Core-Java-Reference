@@ -1,0 +1,23 @@
+TypeScript - Questions and Answers
+
+1. What are the main differences between TypeScript and JavaScript?
+Answer: TypeScript adds static types, interfaces, enums, generics, and compile-time checks; 
+JavaScript runs without compilation.
+
+2. Explain interfaces vs types. When would you use each?
+Answer: Interfaces are extendable and mergeable, 
+ideal for object shapes; types are more flexible (unions, intersections). 
+Use either; prefer interface for public object APIs.
+
+3. What are generics? Provide a simple example.
+Answer: Generics allow type parameters for reusable components, 
+e.g., function identity<T>(x:T):T.
+
+4. Explain type narrowing and control flow analysis.
+Answer: Type narrowing uses control flow (typeof, instanceof, in, discriminated unions) to refine types in branches.
+
+5. What is the "unknown" type and how is it different from "any"?
+Answer: unknown is safer than any: you must narrow before use. any disables type checking.
+
+6. How do you type async functions and Promises in TypeScript?
+Answer: Async function types return Promise<T>. Example: async function f(): Promise<number> { return 1; }.

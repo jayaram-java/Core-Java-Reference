@@ -1,0 +1,43 @@
+JavaScript Interview Answers (Core JS, ES6+ Features, TypeScript)
+
+Core JavaScript
+1. var is function-scoped, hoisted and can be re-declared; let is block-scoped, hoisted but in TDZ, cannot be re-declared; const is block-scoped, must be initialized once, cannot be re-assigned (object contents can still change). Use const by default, let when reassigning, avoid var in modern code.
+2. Primitive types: string, number, bigint, boolean, undefined, symbol, null. Reference types: object (including arrays, functions). Primitives are copied by value; references are copied by reference (pointer to the same object).
+3. Hoisting moves declarations to the top of their scope. Function declarations are hoisted with body; var is hoisted with undefined. let/const are hoisted but uninitialized (TDZ). Example: calling a function declaration before definition works; accessing var before assignment yields undefined; accessing let/const before declaration throws ReferenceError.
+4. TDZ is the period between entering a block and the let/const declaration being evaluated, during which access throws ReferenceError.
+5. Scope: global (whole program), function (within function body), block (within {} with let/const). Lexical scope means scope is determined by where code is written, not how it is called.
+6. == performs type coercion; === checks type and value. Object.is is like === but treats NaN as equal to NaN and distinguishes +0 and -0.
+7. Coercion converts types. Implicit: '5' * 2 becomes 10. Explicit: Number('5') gives 5, Boolean(0) gives false.
+8. Falsy: false, 0, -0, 0n, '', null, undefined, NaN. Everything else is truthy.
+9. Event loop: call stack runs sync code; tasks (macrotasks) like setTimeout go to task queue; microtasks (Promise callbacks) run after current stack before next task. The loop keeps pulling work from queues.
+10. Microtasks: Promise.then/catch/finally, queueMicrotask. Macrotasks: setTimeout, setInterval, DOM events, I/O. Microtasks run before the next macrotask.
+11. Closure: a function remembers variables from its outer scope even after the outer function returns. Example: function makeCounter(){let c=0; return ()=>++c;}.
+12. call invokes with explicit this and args list; apply is same but args array; bind returns a new function with this and optional preset args.
+13. this depends on call site: global (window/undefined in strict), method call (object), constructor (new instance), explicit (call/apply/bind), arrow functions capture lexical this.
+14. Arrow functions are concise, lexically bind this/arguments, cannot be used as constructors, and have implicit return for single expressions.
+15. Higher-order function takes or returns functions. Example: array.map(fn).
+16. Prototypes: objects inherit from another object via [[Prototype]]. Property lookup walks the prototype chain until found or null.
+17. Object.create creates an object with specified prototype directly; class syntax is sugar over prototypes with constructor and methods on prototype.
+18. Getters/setters define property access logic, useful for validation, computed properties, or encapsulation.
+19. Immutability means not changing existing data. Use const, Object.freeze for shallow immutability, or copy with spread/structuredClone for updates.
+20. Strict mode ('use strict') removes silent errors, disallows some syntax (with), and makes this undefined in functions called without a receiver.
+
+ES6+ Features
+21. Destructuring extracts values from arrays/objects: const {a} = obj; const [x,y]=arr; supports defaults and renaming.
+22. Template literals use backticks with ${} interpolation; tagged templates let a function parse the literal for custom processing.
+23. Default parameters give fallback values; rest (...args) gathers; spread (...) expands arrays/objects or arguments.
+24. Modules: ES modules use import/export and are static; CommonJS uses require/module.exports and is dynamic. ESM is standard in browsers and modern Node.
+25. Symbols are unique identifiers used as non-colliding property keys; useful for meta properties or avoiding name conflicts.
+26. Iterators implement next(); generators (function*) produce iterators with yield. Use for lazy sequences or custom iteration.
+27. Promises represent async results with states: pending, fulfilled, rejected. Chain with then/catch/finally.
+28. async/await is syntax over Promises, letting async code read like sync and handling errors with try/catch.
+29. Handle async errors with try/catch in async functions or .catch on Promises; propagate or wrap as needed.
+30. Optional chaining (?.) safely accesses nested props; nullish coalescing (??) uses right side only for null/undefined.
+
+TypeScript
+31. TypeScript adds static types, interfaces, enums, generics, and compile-time checks; JavaScript runs without compilation.
+32. Interfaces are extendable and mergeable, ideal for object shapes; types are more flexible (unions, intersections). Use either; prefer interface for public object APIs.
+33. Generics allow type parameters for reusable components, e.g., function identity<T>(x:T):T.
+34. Type narrowing uses control flow (typeof, instanceof, in, discriminated unions) to refine types in branches.
+35. unknown is safer than any: you must narrow before use. any disables type checking.
+36. Async function types return Promise<T>. Example: async function f(): Promise<number> { return 1; }.

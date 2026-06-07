@@ -1,0 +1,109 @@
+
+What is react ? 
+
+React is a JavaScript library developed by Meta Platforms for building component-based user interfaces, 
+mainly for single-page applications.
+----------------------------------------------
+What are components in React?
+
+Reusable building blocks of UI.
+
+Functional components (modern, hooks-based)
+Class components (older approach)
+-------------------------------------------------
+What is JSX?
+
+JSX stands for JavaScript XML — it allows writing HTML inside JavaScript.
+
+--------------------------------------------------
+
+What is Virtual DOM?
+
+A lightweight copy of the real DOM. React updates only changed parts → improves performance.
+
+--------------------------------------------------
+
+What are props?
+Props is immutable object
+Is controller only by parent component and cannot be changed by the children.
+Inputs passed to components
+Read-only
+
+<MyComponent name="Jayaram" />
+
+---------------------------------------------------
+
+What is state?
+State is a mutable object that stores dynamic data
+Mutable data inside a component
+Used to manage dynamic UI
+
+const [count, setCount] = useState(0);
+
+-------------------------------------------------
+
+What are React Hooks?
+
+Functions that let you use state and lifecycle in functional components.
+
+Common hooks:
+
+useState - used to store the fetched data and the loading data.Used to store and manage state (data)
+useEffect - used to fetch the data when the components mounts
+useContext - Used to share data globally across components without prop drilling.
+useRef - Used to persist values across renders without causing re-renders.
+useMemo - Is used to cache the result of a function so it only recalculates when its dependencies change,
+ improving performance.
+------------------------------------------------------
+
+What is useEffect?
+
+Used for side effects (API calls, subscriptions, DOM updates).
+
+useEffect(() => {
+  fetchData();
+}, []);
+
+--------------------------------------
+
+Difference between state and props?
+
+| Feature    | State        | Props     |
+| ---------- | ------------ | --------- |
+| Mutability | Mutable      | Immutable |
+| Ownership  | Component    | Parent    |
+| Purpose    | Dynamic data | Pass data |
+
+
+-----------------------------------------------
+
+SEA - search engine optimization 
+
+----------------------------------------------
+
+functional and class components 
+
+class components expends with react.components
+
+-------------------------------- life cycle
+
+mount - update - unmount 
+
+------------------------------------
+
+React Router is a library 
+used to handle navigation between components in a React application without reloading the page.
+
+------------------------------------- Axios
+
+Created Axios instance
+Added JWT token using interceptor
+Handled 401 errors globally
+Used in useEffect for API calls
+
+
+
+
+
+
+

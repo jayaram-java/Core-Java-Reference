@@ -50,3 +50,24 @@ circuit breaker -
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 </dependency>
+
+------------------------------------------------------------------------------
+
+Load balancer : 
+
+A load balancer in a microservices architecture is a component that distributes incoming network traffic
+across multiple service instances to ensure reliability, scalability, and performance.
+
+Client
+   |
+Load Balancer
+  /   |   \
+S1   S2   S3   (multiple service instances)
+
+---------------------------------------------------
+
+Algorithm : 
+
+Round robin load balancer.
+
+

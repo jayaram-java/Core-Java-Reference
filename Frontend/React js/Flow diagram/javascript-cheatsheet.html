@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JavaScript Interview Cheat Sheet</title>
+  <style>
+    :root {
+      --bg: #0f1412;
+      --panel: #151b17;
+      --ink: #e8f1e8;
+      --muted: #b8c4b8;
+      --accent: #9dd6a3;
+      --accent-2: #f3c77b;
+      --code: #0b0f0d;
+      --border: #243028;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -20%, #1b2a22, transparent 60%),
+        radial-gradient(900px 600px at 110% 10%, #1f2a1f, transparent 60%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 28px;
+    }
+    header {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 32px;
+      letter-spacing: 0.4px;
+      margin: 0;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    section {
+      background: linear-gradient(180deg, #171f1a, #121814);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent);
+    }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin: 6px 0; }
+    code {
+      background: var(--code);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: "IBM Plex Mono", "Consolas", monospace;
+      color: var(--accent-2);
+    }
+    pre {
+      background: var(--code);
+      border: 1px solid #1d231f;
+      border-radius: 10px;
+      padding: 10px 12px;
+      overflow-x: auto;
+      margin: 8px 0 0 0;
+      color: #e9f4ea;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #0f140f;
+      background: var(--accent);
+      margin-right: 6px;
+    }
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JavaScript Interview Cheat Sheet</h1>
+    <div class="subtitle">Quick, high-signal reminders for common interview topics.</div>
+  </header>
+
+  <div class="grid">
+    <section>
+      <h2>Basics</h2>
+      <ul>
+        <li><code>var</code> function-scoped, hoisted (initialized as <code>undefined</code>).</li>
+        <li><code>let</code>/<code>const</code> block-scoped, temporal dead zone.</li>
+        <li>Primitive types: <code>string</code>, <code>number</code>, <code>bigint</code>, <code>boolean</code>, <code>undefined</code>, <code>symbol</code>, <code>null</code>.</li>
+        <li><code>typeof null</code> is <code>"object"</code> (legacy quirk).</li>
+        <li>Strict equality <code>===</code> avoids coercion.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Hoisting & Scope</h2>
+      <ul>
+        <li>Function declarations hoist fully; function expressions hoist the variable only.</li>
+        <li>Lexical scope: functions remember the scope where they are created.</li>
+        <li>Global: <code>window</code> (browser) / <code>global</code> (Node).</li>
+      </ul>
+      <pre><code>console.log(a) // undefined
+var a = 1
+// let a = 1 would throw ReferenceError</code></pre>
+    </section>
+
+    <section>
+      <h2>Closures</h2>
+      <ul>
+        <li>Function + its lexical environment captured.</li>
+        <li>Used for data privacy, factories, memoization.</li>
+      </ul>
+      <pre><code>function counter() {
+  let n = 0
+  return () => ++n
+}
+const c = counter()
+</code></pre>
+    </section>
+
+    <section>
+      <h2>This & Binding</h2>
+      <ul>
+        <li>Default: <code>this</code> is global (non-strict) or <code>undefined</code> (strict).</li>
+        <li>Method call: <code>obj.fn()</code> sets <code>this</code> to <code>obj</code>.</li>
+        <li>Arrow functions: no own <code>this</code>, lexical.</li>
+        <li>Explicit: <code>call</code>, <code>apply</code>, <code>bind</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Objects & Prototypes</h2>
+      <ul>
+        <li>Every object has internal <code>[[Prototype]]</code> link.</li>
+        <li>Prototype chain resolves property lookups.</li>
+        <li><code>Object.create(proto)</code> creates with given prototype.</li>
+        <li><code>class</code> is syntactic sugar over prototypes.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Functions</h2>
+      <ul>
+        <li>First-class: pass/return/store like values.</li>
+        <li>Higher-order functions: accept or return functions.</li>
+        <li>IIFE: immediately invoked function expression.</li>
+        <li>Arrow functions: concise syntax, lexical <code>this</code>, no <code>arguments</code>.</li>
+      </ul>
+      <pre><code>const add = (a, b) =&gt; a + b
+
+(function () {
+  // init
+})()</code></pre>
+    </section>
+
+    <section>
+      <h2>Array Methods</h2>
+      <ul>
+        <li><code>map</code> transforms, same length.</li>
+        <li><code>filter</code> selects subset.</li>
+        <li><code>reduce</code> aggregates to single value.</li>
+        <li><code>find</code> returns first match, <code>some</code>/<code>every</code> boolean checks.</li>
+        <li><code>slice</code> non-mutating, <code>splice</code> mutating.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Async JS</h2>
+      <ul>
+        <li>Event loop: call stack + task/microtask queues.</li>
+        <li>Promises: <code>then</code>/<code>catch</code>/<code>finally</code>.</li>
+        <li><code>async</code>/<code>await</code> is syntax over promises.</li>
+      </ul>
+      <pre><code>async function getData() {
+  try {
+    const res = await fetch(url)
+    return await res.json()
+  } catch (e) {
+    console.error(e)
+  }
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>Common Pitfalls</h2>
+      <ul>
+        <li><code>[] == false</code> is <code>true</code> (coercion).</li>
+        <li>Floating point: <code>0.1 + 0.2 !== 0.3</code>.</li>
+        <li>Mutating arrays/objects can cause side effects.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>DOM & Events</h2>
+      <ul>
+        <li>Event bubbling vs capturing.</li>
+        <li>Use event delegation for lists.</li>
+        <li><code>preventDefault</code> stops default behavior.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Modules</h2>
+      <ul>
+        <li>ESM: <code>import</code>/<code>export</code> with static analysis.</li>
+        <li>CommonJS: <code>require</code>/<code>module.exports</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Performance</h2>
+      <ul>
+        <li>Debounce vs throttle for event-heavy UI.</li>
+        <li>Avoid layout thrashing: batch DOM reads/writes.</li>
+        <li>Use <code>requestAnimationFrame</code> for animations.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Interview Prompts</h2>
+      <ul>
+        <li><span class="tag">Explain</span> event loop with microtasks.</li>
+        <li><span class="tag">Code</span> deep clone function.</li>
+        <li><span class="tag">Compare</span> <code>var</code> vs <code>let</code> vs <code>const</code>.</li>
+        <li><span class="tag">Build</span> promise polyfill basics.</li>
+      </ul>
+      <div class="note">Tip: use examples + edge cases in answers.</div>
+    </section>
+  </div>
+</body>
+</html>
