@@ -1,0 +1,14 @@
+I’m Jayaram. 
+I graduated with a B.E. in Electronics and Communication Engineering (ECE). 
+I have over 6 years of experience in Java development.
+During my first 2 years, I worked on a finance management system involving invoice generation, purchase order (PO) processing,
+and inventory management.
+For the next 2 years, I worked on banking applications covering Accounts and loan modules for Federal Bank, India.
+For the past 2 years, I have been working on a banking project for SinoPac Bank, Taiwan.
+
+
+
+I also implemented email alert functionality using jakarta.mail(SMTP).
+Additionally, I worked on PDF generation using the OpenPDF Maven dependency.
+
+User - jeyaramp  pass - great24+S$ | great24+J$

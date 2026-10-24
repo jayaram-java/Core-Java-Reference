@@ -1,0 +1,9 @@
+
+self intro
+sinopac project
+react 
+java + Spring Framework + microservices
+sql 
+deployment
+
+

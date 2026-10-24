@@ -1,0 +1,31 @@
+
+In my current project, I have been working on the Deposit, beneificary, and Transfer modules. 
+I worked with kafka-based integration to support email notification use cases.
+I also focused on production readiness: error handling, logging and operational visibility through actuator.
+
+--------------------------------------- react 
+
+In my recent project, I worked on a react and typescript based digital banking application,
+and my main focus was the send money and beneficiary management modules.
+
+In send money, I implemented a complete transaction flow from recipient selection to transfer confirmation.
+the key part i owned was OTP- based verification. where we first generate otp , validate it and only then
+allow payment createion.
+
+
+I handled input validation, step-by-step state transitons and API orchestration so the flow remains secure
+and smooth even when network errors happen.
+
+In beneficiary management, I worked on adding and managing beneficiaries with clear form validation
+and confirmation steps. I also ensured users can quickly choose existing beneficiaries during transfer
+which improved speed and usability.
+-------------------------------------
+From a technical side, we followed a modular feature-based architecture with container, presenter and view separation.
+I integrated backend APIs through a centralized axios layer, used guarded routes for protected journeys and
+added reusable ui components for consistency.
+
+
+
+
+
+
