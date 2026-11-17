@@ -70,4 +70,20 @@ Algorithm :
 
 Round robin load balancer.
 
+---------------------------------------------------------
+
+Circuit breaker(Resilience4j - dependency) : 
+
+A Circuit Breaker is a design pattern used in microservices architecture to prevent a system from repeatedly calling a failing service.
+
+It works just like an electrical circuit breaker:
+
+If too many failures happen → it opens the circuit
+Stops calling the failed service
+Gives it time to recover
+
+Why Do We Need It?
+
+Service A → calls → Service B
+If Service B is slow or down, then:
 
